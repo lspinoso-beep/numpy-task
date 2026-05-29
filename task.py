@@ -73,6 +73,46 @@ pass
 
 def risolvi_sistema_lineare(A: list, b: list) -> np.ndarray:
     """Sub-task 3: Risolvere un Sistema Lineare."""
+
+    # Conversione in array NumPy
+    A_np = np.array(A, dtype=float)
+    b_np = np.array(b, dtype=float)
+
+    # Verifica che la matrice sia quadrata
+    if A_np.shape[0] != A_np.shape[1]:
+        raise ValueError("La matrice A deve essere quadrata")
+
+    # Verifica compatibilità dimensioni
+    if A_np.shape[0] != b_np.shape[0]:
+        raise ValueError("Le dimensioni di A e b non sono compatibili")
+
+    # Risoluzione del sistema
+    try:
+        x = np.linalg.solve(A_np, b_np)
+    except np.linalg.LinAlgError:
+
+        raise ValueError("Il sistema non ha soluzione unica (matrice singolare)")
+        return None
+
+        return x
+
+    # Input utente
+    n = int(input("Inserisci la dimensione della matrice (n): "))
+
+    print("Inserisci la matrice A (riga per riga, valori separati da spazio):")
+    A = []
+    for i in range(n):
+        riga = list(map(float, input().split()))
+        A.append(riga)
+
+    print("Inserisci il vettore b (valori separati da spazio):")
+    b = list(map(float, input().split()))
+
+    # Calcolo soluzione
+    soluzione = risolvi_sistema_lineare(A, b)
+
+    print("Soluzione:", soluzione)
+
     pass
 
 def correlazione_matrici(m1: list, m2: list) -> np.ndarray:
