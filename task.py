@@ -4,10 +4,33 @@ import numpy as np
 
 def prodotto_scalare(v1: list, v2: list) -> float:
     """Sub-task 1: Prodotto Scalare."""
+
+    arr1 = np.array(v1)
+    arr2 = np.array(v2)
+
+    if arr1.shape != arr2.shape:
+        raise ValueError("I due vettori devono avere la stessa lunghezza")
+
+    return float(np.dot(arr1, arr2))
+
+
+# --- INPUT UTENTE ---
+v1 = list(map(float, input("Inserisci il primo vettore (numeri separati da spazio): ").split()))
+v2 = list(map(float, input("Inserisci il secondo vettore (numeri separati da spazio): ").split()))
+
+# --- CALCOLO ---
+try:
+    risultato = prodotto_scalare(v1, v2)
+
+    print("Prodotto scalare:", risultato)
+except ValueError as e:
+    print("Errore:", e)
+
     pass
 
 def rango_matrice(m: list) -> int:
     """Sub-task 2: Calcola il rango di una matrice."""
+
     pass
 
 def risolvi_sistema_lineare(A: list, b: list) -> np.ndarray:
