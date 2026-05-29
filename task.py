@@ -152,8 +152,29 @@ for i in range(2):
     pass
 
 def operazioni_elemento_per_elemento(v1: list) -> tuple:
-    """Sub-task 5: Restituisce (seno, coseno, arcoseno, arcocoseno) elemento per elemento calcolati sul primo array."""
-    pass
+    """Sub-task 5: Restituisce (seno, coseno, arcoseno, arcocoseno) elemento per elemento calcolati sul primo a
+    rray."""
+    arr = np.array(v1, dtype=float)
+
+    seno = np.sin(arr)
+    coseno = np.cos(arr)
+    arcoseno = np.arcsin(arr)
+    arcocoseno = np.arccos(arr)
+
+    return seno, coseno, arcoseno, arcocoseno
+# Input da utente
+numeri = list(map(float, input("Inserisci numeri separati da spazio: ").split()))
+
+# Chiamata funzione
+risultati = operazioni_elemento_per_elemento(numeri)
+
+# Output
+print("Seno:", risultati[0])
+print("Coseno:", risultati[1])
+print("Arcoseno:", risultati[2])
+print("Arcocoseno:", risultati[3])
+
+pass
 
 
 def main():
