@@ -117,6 +117,38 @@ def risolvi_sistema_lineare(A: list, b: list) -> np.ndarray:
 
 def correlazione_matrici(m1: list, m2: list) -> np.ndarray:
     """Sub-task 4: Correlazione tra Matrici 2x2."""
+
+    # Conversione in array NumPy
+    a = np.array(m1)
+    b = np.array(m2)
+
+    # Appiattimento (flatten)
+    a_flat = a.flatten()
+    b_flat = b.flatten()
+
+    # Calcolo correlazione (Pearson)
+    return np.corrcoef(a_flat, b_flat)
+
+
+# Input matrici dall'utente
+print("Inserisci i valori della prima matrice 2x2:")
+m1 = []
+for i in range(2):
+    riga = list(map(float, input(f"Riga {i + 1} (2 valori separati da spazio): ").split()))
+    m1.append(riga)
+
+    print("\nInserisci i valori della seconda matrice 2x2:")
+    m2 = []
+    for i in range(2):
+        riga = list(map(float, input(f"Riga {i + 1} (2 valori separati da spazio): ").split()))
+        m2.append(riga)
+
+    # Calcolo e stampa risultato
+    risultato = correlazione_matrici(m1, m2)
+
+    print("\nMatrice di correlazione:")
+    print(risultato)
+
     pass
 
 def operazioni_elemento_per_elemento(v1: list) -> tuple:
