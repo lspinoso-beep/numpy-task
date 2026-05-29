@@ -31,7 +31,45 @@ except ValueError as e:
 def rango_matrice(m: list) -> int:
     """Sub-task 2: Calcola il rango di una matrice."""
 
-    pass
+    matrice = np.array(m)
+    return int(np.linalg.matrix_rank(matrice))
+
+
+def leggi_matrice():
+    print("Inserisci il numero di righe:")
+    righe = int(input())
+
+    print("Inserisci il numero di colonne:")
+    colonne = int(input())
+
+    matrice = []
+
+    print("Inserisci gli elementi della matrice riga per riga:")
+
+    for i in range(righe):
+        while True:
+            riga = input(f"Riga {i + 1} (separa i numeri con spazio): ").split()
+            if len(riga) != colonne:
+                print("Numero di elementi errato, riprova.")
+            else:
+
+                matrice.append([float(x) for x in riga])
+                break
+
+    return matrice
+
+if __name__ == "__main__":
+   m = leggi_matrice()
+
+   rango = rango_matrice(m)
+
+   print("\nLa matrice inserita è:")
+   for r in m:
+       print(r)
+
+   print(f"\nIl rango della matrice è: {rango}")
+
+pass
 
 def risolvi_sistema_lineare(A: list, b: list) -> np.ndarray:
     """Sub-task 3: Risolvere un Sistema Lineare."""
